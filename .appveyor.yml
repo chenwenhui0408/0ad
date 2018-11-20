@@ -16,3 +16,21 @@ build:
   parallel: true
   verbosity: quiet
 
+after_build:
+  - 7z a binaries.7z .\binaries
+
+
+artifacts:
+- path: binaries.7z
+
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: PiQDTyaNV3HdYRawTlwyD/bsMbpBg2Kx+/BEUEz9qOasvZlDBmxj3tFB0bNYwXIc
+  artifact: binaries.7z
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
