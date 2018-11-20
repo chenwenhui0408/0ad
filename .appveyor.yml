@@ -1,0 +1,16 @@
+image: Visual Studio 2015
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+configuration:
+  - Release
+  
+before_build:
+  - .\build\workspaces\update-workspaces.bat
+
+build:
+  project: .\build\workspaces\vc2015\pyrogenesis.sln
+  parallel: true
+  verbosity: quiet
+
