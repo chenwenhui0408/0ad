@@ -7,7 +7,9 @@ configuration:
   - Release
   
 before_build:
-  - .\build\workspaces\update-workspaces.bat
+  - cd .\build\workspaces\
+  - update-workspaces.bat
+  - cd ..\..\
 
 build:
   project: .\build\workspaces\vc2015\pyrogenesis.sln
